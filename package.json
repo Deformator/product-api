@@ -1,0 +1,11 @@
+{
+  "name": "assignment1",
+  "version": "1.0.0",
+  "description": "developing of node.js http server to handle requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "andrii_damm",
+  "license": "ISC"
+}
