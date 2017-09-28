@@ -1,6 +1,10 @@
-var SERVER_NAME = 'product-api'
+var SERVER_NAME = 'product-api';
 var PORT = 8000;
 var HOST = '127.0.0.1';
+
+//request counters
+var getCounter = 0;
+var postCounter = 0;
 
 var restify = require('restify')
 
@@ -32,6 +36,8 @@ var restify = require('restify')
     
         // Return all of the products in the system
         res.send(products)
+        getCounter++;
+        console.log('Processed request count --> sendGet: ' +getCounter + ', sendPost: ' + postCounter)
       })
     })
 
@@ -47,6 +53,8 @@ server.get('/products/:id', function (req, res, next) {
         if (product) {
           // Send the product if no issues
           res.send(product)
+          getCounter++;
+          console.log('Processed request count --> sendGet: ' +getCounter + ', sendPost: ' + postCounter)
         } else {
           // Send 404 header if the product doesn't exist
           res.send(404)
@@ -79,6 +87,8 @@ server.post('/products', function (req, res, next) {
     
         // Send the product if no issues
         res.send(201, product)
+        postCounter++;
+        console.log('Processed request count --> sendGet: ' + getCounter + ', sendPost: ' + postCounter)
       })
     })
 
