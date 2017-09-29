@@ -80,7 +80,7 @@ server.post('/products', function (req, res, next) {
         }
 
           // Create the product using the persistence engine
-          productsSave.create( newProduct, function (error, product) {
+          productsSave.create(newProduct, function (error, product) {
     
         // If there are any errors, pass them to next in the correct format
         if (error) return next(new restify.InvalidArgumentError(JSON.stringify(error.errors)))
@@ -106,16 +106,16 @@ server.del('/products/:id', function (req, res, next) {
       })
     })
 
-        // Delete all products with the given id
+        // Delete all products
 server.del('/products', function (req, res, next) {
     
       // Delete the product with the persistence engine
-      productsSave.delete({}, function (error, product) {
+      productsSave.deleteMany({},function (error, product) {
     
         // If there are any errors, pass them to next in the correct format
         if (error) return next(new restify.InvalidArgumentError(JSON.stringify(error.errors)))
     
         // Send a 200 OK response
-        res.send()
+        res.send(204)
       })
     })
